@@ -28,21 +28,15 @@ public class TaskService {
     this.fakeTaskDatabase = fakeTaskDatabase;
   }
 
-  public TaskDto saveTask(TaskCreationDto taskCreationDto) {
+  public String saveTask(TaskCreationDto taskCreationDto) {
 
     TaskModel task = fakeTaskDatabase.createTask(
-        taskCreationDto.Title(),
+        taskCreationDto.title(),
         taskCreationDto.description(),
         taskCreationDto.ownerName()
     );
 
-    return new TaskDto(
-        task.getId(),
-        task.getTitle(),
-        task.getDescription(),
-        task.getOwnerName(),
-        task.getIsCompleted()
-    );
+    return task.getId();
 
   }
 
