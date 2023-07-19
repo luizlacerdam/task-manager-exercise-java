@@ -69,4 +69,10 @@ public class TaskService {
     }
     return allTaskDto;
   }
+
+  public void setTaskWithIdAsComplete(String id) {
+    TaskModel task = fakeTaskDatabase.getTaskById(id);
+    task.setIsCompleted(true);
+  }
+
 }
