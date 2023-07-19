@@ -2,6 +2,7 @@ package com.betrybe.taskmanager.service;
 
 import com.betrybe.taskmanager.database.FakeTaskDatabase;
 import com.betrybe.taskmanager.database.TaskDatabaseInterface;
+import com.betrybe.taskmanager.dto.TaskCreationDto;
 import com.betrybe.taskmanager.dto.TaskDto;
 import com.betrybe.taskmanager.model.TaskModel;
 import java.util.ArrayList;
@@ -25,6 +26,24 @@ public class TaskService {
   @Autowired
   public TaskService (TaskDatabaseInterface fakeTaskDatabase) {
     this.fakeTaskDatabase = fakeTaskDatabase;
+  }
+
+  public TaskDto saveTask(TaskCreationDto taskCreationDto) {
+
+    TaskModel task = fakeTaskDatabase.createTask(
+        taskCreationDto.Title(),
+        taskCreationDto.description(),
+        taskCreationDto.ownerName()
+    );
+
+    return new TaskDto(
+        task.getId(),
+        task.getTitle(),
+        task.getDescription(),
+        task.getOwnerName(),
+        task.getIsCompleted()
+    );
+
   }
 
   public TaskDto getTaskById(String id) {
