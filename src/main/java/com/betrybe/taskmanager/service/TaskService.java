@@ -27,9 +27,9 @@ public class TaskService {
     this.fakeTaskDatabase = fakeTaskDatabase;
   }
 
-  public TaskDto getTaskById(Long id) {
+  public TaskDto getTaskById(String id) {
 //  Optional<TaskModel> taskOptional = fakeTaskDatabase.getTaskById(id.toString());
-    TaskModel taskModel = fakeTaskDatabase.getTaskById(id.toString());
+    TaskModel taskModel = fakeTaskDatabase.getTaskById(id);
     TaskDto taskDto = new TaskDto(
         taskModel.getId(),
         taskModel.getTitle(),
