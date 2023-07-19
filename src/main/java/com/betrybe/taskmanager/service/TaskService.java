@@ -75,4 +75,9 @@ public class TaskService {
     task.setIsCompleted(true);
   }
 
+  public boolean deleteTaskById(String id) {
+    fakeTaskDatabase.removeTaskById(id);
+    return true;
+  }
+
 }
