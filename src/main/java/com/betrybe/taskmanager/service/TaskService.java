@@ -24,10 +24,13 @@ public class TaskService {
    * Constructor.
    */
   @Autowired
-  public TaskService (TaskDatabaseInterface fakeTaskDatabase) {
+  public TaskService(TaskDatabaseInterface fakeTaskDatabase) {
     this.fakeTaskDatabase = fakeTaskDatabase;
   }
 
+  /**
+   * Save task, creating new task.
+   */
   public String saveTask(TaskCreationDto taskCreationDto) {
 
     TaskModel task = fakeTaskDatabase.createTask(
@@ -35,13 +38,13 @@ public class TaskService {
         taskCreationDto.description(),
         taskCreationDto.ownerName()
     );
-
     return task.getId();
-
   }
 
+  /**
+   * Pegar pelo id.
+   */
   public TaskDto getTaskById(String id) {
-//  Optional<TaskModel> taskOptional = fakeTaskDatabase.getTaskById(id.toString());
     TaskModel taskModel = fakeTaskDatabase.getTaskById(id);
     TaskDto taskDto = new TaskDto(
         taskModel.getId(),
@@ -53,6 +56,9 @@ public class TaskService {
     return taskDto;
   }
 
+  /**
+   * Pega todas tasks.
+   */
   public List<TaskDto> geAllTasks() {
     List<TaskDto> allTaskDto = new ArrayList<>();
 

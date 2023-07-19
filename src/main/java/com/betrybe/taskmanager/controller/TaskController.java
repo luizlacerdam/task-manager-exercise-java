@@ -30,7 +30,7 @@ public class TaskController {
    * Constructor.
    */
   @Autowired
-  public TaskController (TaskService service) {
+  public TaskController(TaskService service) {
     this.service = service;
   }
 
