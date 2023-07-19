@@ -17,6 +17,9 @@ public class TaskService {
 
   TaskDatabaseInterface fakeTaskDatabase;
 
+  /**
+   * Constructor.
+   */
   @Autowired
   public TaskService (TaskDatabaseInterface fakeTaskDatabase) {
     this.fakeTaskDatabase = fakeTaskDatabase;
